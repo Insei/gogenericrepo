@@ -63,6 +63,18 @@ func (e DateTrackedEntity[IDType]) GetDeletedAt() *time.Time {
 	return e.DeletedAt
 }
 
+//EntityUUID date tracked entity structure where ID type is uuid.UUID
+type EntityUUID struct {
+	BaseEntity[uuid.UUID]
+	//	ID - entity identifier
+	ID uuid.UUID `gorm:"primary_key; type:varchar(36)"`
+}
+
+//GetID of the entity
+func (e EntityUUID) GetID() uuid.UUID {
+	return e.ID
+}
+
 //DateTrackedEntityUUID date tracked entity structure where ID type is uuid.UUID
 type DateTrackedEntityUUID struct {
 	DateTrackedEntity[uuid.UUID]
